@@ -7,7 +7,7 @@ import javax.swing.Icon
 /**
  * @author Vitalii Dmitriev
  */
-class BlueprintFileType : LanguageFileType(Blueprint.INSTANCE) {
+class BlueprintFileType : LanguageFileType(BlueprintLang.INSTANCE) {
     companion object {
         val INSTANCE = BlueprintFileType()
     }

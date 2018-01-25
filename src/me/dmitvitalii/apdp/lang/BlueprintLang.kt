@@ -6,8 +6,8 @@ import com.intellij.lang.Language
 /**
  * @author Vitalii Dmitriev
  */
-class Blueprint() : Language(Blueprint::class.toString()) {
+class BlueprintLang : Language(BlueprintLang::class.toString()) {
     companion object Holder {
-        val INSTANCE = Blueprint()
+        val INSTANCE = BlueprintLang()
     }
 }
