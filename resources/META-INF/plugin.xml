@@ -32,7 +32,7 @@
     <actions>
         <group id="APDP.SampleMenu" text="_Sample Menu" description="Sample Menu">
             <add-to-group group-id="NewGroup" anchor="last"/>
-            <action class="me.dmitvitalii.TextBoxes" id="apdp.TextBoxes"/>
+            <action class="me.dmitvitalii.blueprint.actions.CreateBlueprintAction" id="apdp.CreateBlueprintFile"/>
         </group>
     </actions>
 </idea-plugin>
