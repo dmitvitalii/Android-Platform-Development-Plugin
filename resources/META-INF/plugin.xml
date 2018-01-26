@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>me.dmitvitalii</id>
     <name>Android Platform Development Plugin</name>
-    <version>1.0</version>
+    <version>0.1</version>
     <vendor email="dmit.vitalii@gmail.com">Vitalii Dmitriev</vendor>
 
     <description><![CDATA[
