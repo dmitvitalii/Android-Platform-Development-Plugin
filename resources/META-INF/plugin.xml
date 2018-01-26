@@ -27,7 +27,9 @@
 
     <extensions defaultExtensionNs="com.intellij">
         <fileTypeFactory implementation="me.dmitvitalii.blueprint.lang.psi.BlueprintFileTypeFactory"/>
+        <lang.parserDefinition language="Blueprint" implementationClass="me.dmitvitalii.blueprint.lang.BlueprintParserDefinition"/>
     </extensions>
+
 
     <actions>
         <group id="APDP.SampleMenu" text="_Sample Menu" description="Sample Menu">
