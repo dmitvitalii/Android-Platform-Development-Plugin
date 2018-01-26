@@ -20,7 +20,7 @@ import com.intellij.lang.Language
 import com.intellij.openapi.fileTypes.FileTypeConsumer
 import com.intellij.openapi.fileTypes.FileTypeFactory
 import com.intellij.openapi.fileTypes.LanguageFileType
-import com.intellij.psi.AbstractFileViewProvider
+import com.intellij.psi.FileViewProvider
 import com.intellij.psi.tree.IElementType
 import com.intellij.util.PlatformIcons
 import javax.swing.Icon
@@ -29,39 +29,39 @@ import javax.swing.Icon
  * TODO: Seems that it's a common way to use INSTANCE. Can singletons be replaced (e.g. with DI)?
  * @author Vitalii Dmitriev
  */
-class BlueprintElementType(debugName: String) : IElementType(debugName, BlueprintLang.INSTANCE)
+class BlueprintElementType(debugName: String) : IElementType(debugName, BlueprintLanguage.INSTANCE)
 
-class BlueprintLang : Language(BlueprintLang::class.toString()) {
+class BlueprintLanguage : Language("Blueprint") {
   companion object Holder {
-    val INSTANCE = BlueprintLang()
+    val INSTANCE = BlueprintLanguage()
   }
 }
 
-class BlueprintTokenType(debugName: String) : IElementType(debugName, BlueprintLang.INSTANCE) {
+class BlueprintTokenType(debugName: String) : IElementType(debugName, BlueprintLanguage.INSTANCE) {
   override fun toString() = "${BlueprintTokenType::class}.${super.toString()}"
 }
 
 class BlueprintFileTypeFactory : FileTypeFactory() {
   override fun createFileTypes(consumer: FileTypeConsumer) {
-    consumer.consume(BlueprintFileType.INSTANCE)
+    consumer.consume(BlueprintFileType.INSTANCE, "bp")
   }
 }
 
-class BlueprintFileType : LanguageFileType(BlueprintLang.INSTANCE) {
+class BlueprintFileType : LanguageFileType(BlueprintLanguage.INSTANCE) {
   companion object {
     val INSTANCE = BlueprintFileType()
   }
 
   override fun getIcon(): Icon = PlatformIcons.CUSTOM_FILE_ICON
 
-  override fun getName() = "Config file"
+  override fun getName() = "Android.bp file"
 
   override fun getDescription() = "Config files for platform projects."
 
   override fun getDefaultExtension() = "bp"
 }
 
-class BlueprintFile(provider: AbstractFileViewProvider) : PsiFileBase(provider, BlueprintLang.INSTANCE) {
+class BlueprintFile(provider: FileViewProvider) : PsiFileBase(provider, BlueprintLanguage.INSTANCE) {
   override fun getFileType() = BlueprintFileType.INSTANCE
 
   override fun toString() = fileType.name
