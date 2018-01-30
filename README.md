@@ -3,9 +3,9 @@
 Set of functions to ease the Android platform development process. Work in progress.
 
 ## TODO
-* Android.bp and Android.mk support: highlighting, autocomplete;
+* Android.bp and Android.mk support: highlighting, autocomplete for known variables and C flags;
 * Platform project structure and dependency control support;
-* Closer integration with the out/ directory.
 * New platform application template;
+* Closer integration with the out/ directory.
 * Create Java/C++ system service with/without lifecycle;
 * HIDL support (if Google won't develop it earlier);
