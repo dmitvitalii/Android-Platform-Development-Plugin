@@ -8,5 +8,6 @@ Set of functions to ease the Android platform development process. Work in progr
 * New platform application template;
 * Closer integration with the out/ directory;
 * Create Java/C++ system service with/without lifecycle;
+* Work with SELinux policies (adding/deleting rules);
 * HIDL support (if Google won't develop it earlier);
 * Tool for installing/pushing projects on a device: for libraries, binaries, system apps, native libs etc.
