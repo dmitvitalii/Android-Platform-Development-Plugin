@@ -21,10 +21,8 @@ import com.intellij.lang.Language
 import com.intellij.openapi.fileTypes.FileTypeConsumer
 import com.intellij.openapi.fileTypes.FileTypeFactory
 import com.intellij.openapi.fileTypes.LanguageFileType
-import com.intellij.openapi.util.IconLoader
 import com.intellij.psi.FileViewProvider
 import com.intellij.psi.tree.IElementType
-import com.intellij.util.PlatformIcons
 import javax.swing.Icon
 
 /**
@@ -40,7 +38,7 @@ class BlueprintLanguage : Language("Blueprint") {
 }
 
 class BlueprintTokenType(debugName: String) : IElementType(debugName, BlueprintLanguage.INSTANCE) {
-  override fun toString() = "${BlueprintTokenType::class}.${super.toString()}"
+  override fun toString() = "${BlueprintTokenType::class.simpleName}.${super.toString()}"
 }
 
 class BlueprintFileTypeFactory : FileTypeFactory() {
