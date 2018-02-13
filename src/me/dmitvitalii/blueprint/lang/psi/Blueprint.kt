@@ -16,10 +16,12 @@
 package me.dmitvitalii.blueprint.lang.psi
 
 import com.intellij.extapi.psi.PsiFileBase
+import com.intellij.icons.AllIcons
 import com.intellij.lang.Language
 import com.intellij.openapi.fileTypes.FileTypeConsumer
 import com.intellij.openapi.fileTypes.FileTypeFactory
 import com.intellij.openapi.fileTypes.LanguageFileType
+import com.intellij.openapi.util.IconLoader
 import com.intellij.psi.FileViewProvider
 import com.intellij.psi.tree.IElementType
 import com.intellij.util.PlatformIcons
@@ -43,7 +45,7 @@ class BlueprintTokenType(debugName: String) : IElementType(debugName, BlueprintL
 
 class BlueprintFileTypeFactory : FileTypeFactory() {
   override fun createFileTypes(consumer: FileTypeConsumer) {
-    consumer.consume(BlueprintFileType.INSTANCE, "bp")
+    consumer.consume(BlueprintFileType.INSTANCE)
   }
 }
 
