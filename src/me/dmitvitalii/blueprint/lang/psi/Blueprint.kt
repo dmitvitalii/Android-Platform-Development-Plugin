@@ -54,7 +54,7 @@ class BlueprintFileType : LanguageFileType(BlueprintLanguage.INSTANCE) {
     val INSTANCE = BlueprintFileType()
   }
 
-  override fun getIcon(): Icon = PlatformIcons.CUSTOM_FILE_ICON
+  override fun getIcon(): Icon = AllIcons.FileTypes.Config
 
   override fun getName() = "Android.bp file"
 
