@@ -17,7 +17,6 @@ package me.dmitvitalii.blueprint.lang
 
 import com.intellij.lang.ASTNode
 import com.intellij.lang.ParserDefinition
-import com.intellij.lexer.FlexAdapter
 import com.intellij.openapi.project.Project
 import com.intellij.psi.FileViewProvider
 import com.intellij.psi.TokenType
@@ -42,7 +41,7 @@ class BlueprintParserDefinition : ParserDefinition {
 
   override fun getFileNodeType() = IFileElementType(BlueprintLanguage.INSTANCE)
 
-  override fun createLexer(p0: Project?) = FlexAdapter(BlueprintLexer())
+  override fun createLexer(project: Project) = BlueprintLexerAdapter()
 
   override fun createElement(node: ASTNode) = BlueprintType.Factory.createElement(node)
 
