@@ -4,6 +4,8 @@ Set of functions to ease the Android platform development process. Work in progr
 
 ## TODO
 * Android.bp and Android.mk support: highlighting, autocomplete for known variables and C flags;
+* Android.mk -> Android.bp from context menu using `androidmk` tool;
+* Use `bpfmt` formatter;
 * Platform project structure and dependency control support;
 * New platform application template;
 * Closer integration with the out/ directory;
