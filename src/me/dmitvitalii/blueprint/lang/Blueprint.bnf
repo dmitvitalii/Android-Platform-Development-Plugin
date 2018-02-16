@@ -10,8 +10,41 @@
     elementTypeHolderClass="me.dmitvitalii.blueprint.lang.psi.BlueprintType"
     elementTypeClass="me.dmitvitalii.blueprint.lang.psi.BlueprintElementType"
     tokenTypeClass="me.dmitvitalii.blueprint.lang.psi.BlueprintTokenType"
+
+
+    tokens = [
+        LEFT_BRACE          = '{'
+        RIGHT_BRACE         = '}'
+        LEFT_BRACK          = '['
+        RIGHT_BRACK         = ']'
+        LEFT_PAREN          = '('
+        RIGHT_PAREN         = ')'
+        COMMA               = ','
+        ASSIGN              = '='
+        NOT                 = '!'
+        PLUS_ASSIGN         = '+='
+        // TODO: only as an operator!
+        PLUS                = '+'
+        MINUS_ASSIGN        = '-='
+        // TODO: can be integer's sign
+        MINUS               = '-'
+        SEMICOLON_SYNTHETIC = '<NL>'
+
+        LINE_COMMENT        = 'regexp://.*'
+        // "/*" ([^*]|\*+[^*/])* (\*+"/")?
+        MULTILINE_COMMENT   = 'regexp:/\*([^*]|\*+[^*/])*(\*+/)?'
+        // else /\*(?:[^*]|\*[^/])*\*+/
+
+        STRING              = "regexp:\"([^\\\"\r\n]|\\[^\r\n])*\"?"
+//        CHAR = "regexp:'([^\\\'\r\n]|\\[^\r\n])*'?" // FIXME: do we have chars, single quoted strings or nothing?
+
+        NUMBER              = 'regexp:-?(0|[1-9]\d*)(\.\d+)?([eE][+-]?\d*)?'
+        TRUE                = 'true'
+        FALSE               = 'false'
+//        NULL='null' // FIXME: do we have nulls in Android.bp?
+    ]
 }
 
-simpleFile ::= item_*
+blueprintFile ::= item_*
 private item_ ::= (property|COMMENT|CRLF)
 property ::= (KEY? SEPARATOR VALUE?) | KEY
