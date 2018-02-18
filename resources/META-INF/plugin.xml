@@ -10,16 +10,6 @@
 
     <change-notes><![CDATA[
       <h>Initial project structure.</h>
-      <b>TODO:</b>
-      <ul>
-        <li>Android.bp syntax highlighting;</li>
-        <li>Android.mk syntax highlighting;</li>
-        <li>New platform application template;</li>
-        <li>Create Java system service with/without lifecycle;</li>
-        <li>Create C++ system service with/without lifecycle;</li>
-        <li>Closer integration with the out/ directory.</li>
-        <li>HIDL support (if Google won't develop it earlier);</li>
-      </ul>
     ]]>
     </change-notes>
 
