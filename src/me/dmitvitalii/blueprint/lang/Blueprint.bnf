@@ -46,5 +46,5 @@
 }
 
 blueprintFile ::= item_*
-private item_ ::= (property|COMMENT|CRLF)
+private item_ ::= (property|LINE_COMMENT|MULTILINE_COMMENT|CRLF)
 property ::= (KEY? SEPARATOR VALUE?) | KEY
