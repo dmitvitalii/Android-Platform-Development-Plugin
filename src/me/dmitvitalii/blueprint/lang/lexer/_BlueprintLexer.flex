@@ -37,7 +37,7 @@ NUMBER              = -?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]*)?
 
 <YYINITIAL> {
   {WHITE_SPACE}         { return WHITE_SPACE; }
-
+  {EOL}                 { return SEMICOLON_SYNTHETIC; }
   "{"                   { return LEFT_BRACE; }
   "}"                   { return RIGHT_BRACE; }
   "["                   { return LEFT_BRACK; }
@@ -54,7 +54,8 @@ NUMBER              = -?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]*)?
   "<NL>"                { return SEMICOLON_SYNTHETIC; }
   "true"                { return TRUE; }
   "false"               { return FALSE; }
-  "COMMENT"             { return COMMENT; }
+  "LINE_COMMENT"        { return LINE_COMMENT; }
+  "MULTILINE_COMMENT"   { return MULTILINE_COMMENT; }
   "CRLF"                { return CRLF; }
   "KEY"                 { return KEY; }
   "SEPARATOR"           { return SEPARATOR; }
