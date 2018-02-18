@@ -38,7 +38,7 @@ class BlueprintParserDefinition : ParserDefinition {
 
   override fun spaceExistanceTypeBetweenTokens(left: ASTNode, right: ASTNode) = ParserDefinition.SpaceRequirements.MAY
 
-  override fun getStringLiteralElements() = TokenSet.EMPTY
+  override fun getStringLiteralElements() = TokenSet.create(BlueprintType.STRING)
 
   override fun getFileNodeType() = IFileElementType(BlueprintLanguage.INSTANCE)
 
@@ -46,7 +46,7 @@ class BlueprintParserDefinition : ParserDefinition {
 
   override fun createElement(node: ASTNode) = BlueprintType.Factory.createElement(node)
 
-  override fun getCommentTokens() = TokenSet.create(BlueprintType.COMMENT)
+  override fun getCommentTokens() = TokenSet.create(BlueprintType.LINE_COMMENT, BlueprintType.MULTILINE_COMMENT)
 
   override fun getWhitespaceTokens() = TokenSet.create(TokenType.WHITE_SPACE)
 }
