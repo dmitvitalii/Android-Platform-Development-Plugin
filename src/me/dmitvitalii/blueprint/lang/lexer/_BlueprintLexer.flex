@@ -24,56 +24,55 @@ import static me.dmitvitalii.blueprint.lang.psi.BlueprintType.*;
 %eof{  return;
 %eof}
 
-EOL=\R
-WHITE_SPACE=[ \t\f]
-
-LINE_COMMENT="//".*
-MULTILINE_COMMENT="/"\*([^*]|\*+[^*/])*(\*+"/")?
-STRING=\"([^\\\"\r\n]|\\[^\r\n])*\"?
-NUMBER=-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]*)?
+EOL                 = \R
+WHITE_SPACE         = [ \t\f]
+LINE_COMMENT        = "//".*
+MULTILINE_COMMENT   = "/"\*([^*]|\*+[^*/])*(\*+"/")?
+STRING              = \"([^\\\"\r\n]|\\[^\r\n])*\"?
+NUMBER              = -?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]*)?
 
 %state MAYBE_SEMICOLON
 
 %%
 
 <YYINITIAL> {
-  {WHITE_SPACE}            { return WHITE_SPACE; }
+  {WHITE_SPACE}         { return WHITE_SPACE; }
 
-  "{"                      { return LEFT_BRACE; }
-  "}"                      { return RIGHT_BRACE; }
-  "["                      { return LEFT_BRACK; }
-  "]"                      { return RIGHT_BRACK; }
-  "("                      { return LEFT_PAREN; }
-  ")"                      { return RIGHT_PAREN; }
-  ","                      { return COMMA; }
-  "="                      { return ASSIGN; }
-  "!"                      { return NOT; }
-  "+="                     { return PLUS_ASSIGN; }
-  "+"                      { return PLUS; }
-  "-="                     { return MINUS_ASSIGN; }
-  "-"                      { return MINUS; }
-  "<NL>"                   { return SEMICOLON_SYNTHETIC; }
-  "true"                   { return TRUE; }
-  "false"                  { return FALSE; }
-  "COMMENT"                { return COMMENT; }
-  "CRLF"                   { return CRLF; }
-  "KEY"                    { return KEY; }
-  "SEPARATOR"              { return SEPARATOR; }
-  "VALUE"                  { return VALUE; }
+  "{"                   { return LEFT_BRACE; }
+  "}"                   { return RIGHT_BRACE; }
+  "["                   { return LEFT_BRACK; }
+  "]"                   { return RIGHT_BRACK; }
+  "("                   { return LEFT_PAREN; }
+  ")"                   { return RIGHT_PAREN; }
+  ","                   { return COMMA; }
+  "="                   { return ASSIGN; }
+  "!"                   { return NOT; }
+  "+="                  { return PLUS_ASSIGN; }
+  "+"                   { return PLUS; }
+  "-="                  { return MINUS_ASSIGN; }
+  "-"                   { return MINUS; }
+  "<NL>"                { return SEMICOLON_SYNTHETIC; }
+  "true"                { return TRUE; }
+  "false"               { return FALSE; }
+  "COMMENT"             { return COMMENT; }
+  "CRLF"                { return CRLF; }
+  "KEY"                 { return KEY; }
+  "SEPARATOR"           { return SEPARATOR; }
+  "VALUE"               { return VALUE; }
 
-  {LINE_COMMENT}           { return LINE_COMMENT; }
-  {MULTILINE_COMMENT}      { return MULTILINE_COMMENT; }
-  {STRING}                 { return STRING; }
-  {NUMBER}                 { return NUMBER; }
+  {LINE_COMMENT}        { return LINE_COMMENT; }
+  {MULTILINE_COMMENT}   { return MULTILINE_COMMENT; }
+  {STRING}              { return STRING; }
+  {NUMBER}              { return NUMBER; }
 
 }
 
 <MAYBE_SEMICOLON> {
-{WHITE_SPACE}               { return WHITE_SPACE; }
-{EOL}                       { yybegin(YYINITIAL); yypushback(yytext().length()); return SEMICOLON_SYNTHETIC; }
-{LINE_COMMENT}              { return LINE_COMMENT; }
-{MULTILINE_COMMENT}         { return MULTILINE_COMMENT; }
-.                           { yybegin(YYINITIAL); yypushback(yytext().length()); }
+  {WHITE_SPACE}         { return WHITE_SPACE; }
+  {EOL}                 { yybegin(YYINITIAL); yypushback(yytext().length()); return SEMICOLON_SYNTHETIC; }
+  {LINE_COMMENT}        { return LINE_COMMENT; }
+  {MULTILINE_COMMENT}   { return MULTILINE_COMMENT; }
+  .                     { yybegin(YYINITIAL); yypushback(yytext().length()); }
 }
 
 [^] { return BAD_CHARACTER; }
