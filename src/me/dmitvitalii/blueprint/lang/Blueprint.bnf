@@ -36,8 +36,6 @@
         // else /\*(?:[^*]|\*[^/])*\*+/
 
         STRING              = "regexp:\"([^\\\"\r\n]|\\[^\r\n])*\"?"
-//        CHAR = "regexp:'([^\\\'\r\n]|\\[^\r\n])*'?" // FIXME: do we have chars, single quoted strings or nothing?
-
         NUMBER              = 'regexp:-?(0|[1-9]\d*)(\.\d+)?([eE][+-]?\d*)?'
         TRUE                = 'true'
         FALSE               = 'false'
