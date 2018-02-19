@@ -17,29 +17,21 @@
         RIGHT_BRACE         = '}'
         LEFT_BRACK          = '['
         RIGHT_BRACK         = ']'
-        LEFT_PAREN          = '('
-        RIGHT_PAREN         = ')'
         COMMA               = ','
         ASSIGN              = '='
+        COLON               = ':'
         NOT                 = '!'
         PLUS_ASSIGN         = '+='
-        // TODO: only as an operator!
         PLUS                = '+'
         MINUS_ASSIGN        = '-='
-        // TODO: can be integer's sign
         MINUS               = '-'
         SEMICOLON_SYNTHETIC = '<NL>'
-
         LINE_COMMENT        = 'regexp://.*'
-        // "/*" ([^*]|\*+[^*/])* (\*+"/")?
         MULTILINE_COMMENT   = 'regexp:/\*([^*]|\*+[^*/])*(\*+/)?'
-        // else /\*(?:[^*]|\*[^/])*\*+/
-
-        STRING              = "regexp:\"([^\\\"\r\n]|\\[^\r\n])*\"?"
+        STRING              = 'regexp:\"([^\\\"\r\n]|\\[^\r\n])*\"?'
         NUMBER              = 'regexp:-?(0|[1-9]\d*)(\.\d+)?([eE][+-]?\d*)?'
         TRUE                = 'true'
         FALSE               = 'false'
-//        NULL='null' // FIXME: do we have nulls in Android.bp?
     ]
 }
 
