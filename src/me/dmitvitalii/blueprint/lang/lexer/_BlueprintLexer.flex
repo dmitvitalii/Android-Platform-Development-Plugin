@@ -25,35 +25,36 @@ import static me.dmitvitalii.blueprint.lang.psi.BlueprintType.*;
 EOL=\R
 WHITE_SPACE=\s+
 
+NAME=[a-zA-Z_][a-zA-Z0-9_]*
 LINE_COMMENT="//".*
 MULTILINE_COMMENT="/"\*([^*]|\*+[^*/])*(\*+"/")?
-STRING=\"([^\\\"\r\n]|\\[^\r\n])*\"?
+STRING=\"[^\"]*\"
 NUMBER=-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]*)?
+WS=[ \t\n\f\r]+
 
 %%
 <YYINITIAL> {
-  {WHITE_SPACE}                         { return WHITE_SPACE; }
+  {WHITE_SPACE}            { return WHITE_SPACE; }
 
-  "{"                                   { return LEFT_BRACE; }
-  "}"                                   { return RIGHT_BRACE; }
-  "["                                   { return LEFT_BRACKET; }
-  "]"                                   { return RIGHT_BRACKET; }
-  ","                                   { return COMMA; }
-  "="                                   { return ASSIGN; }
-  ":"                                   { return COLON; }
-  "!"                                   { return NOT; }
-  "+="                                  { return PLUS_ASSIGN; }
-  "+"                                   { return PLUS; }
-  "-"                                   { return MINUS; }
-  "regexpr:[a-zA-Z_][a-zA-Z0-9_]*"      { return NAME; }
-  "true"                                { return TRUE; }
-  "false"                               { return FALSE; }
-  "listitem"                            { return LISTITEM; }
+  "{"                      { return LEFT_BRACE; }
+  "}"                      { return RIGHT_BRACE; }
+  "["                      { return LEFT_BRACKET; }
+  "]"                      { return RIGHT_BRACKET; }
+  ","                      { return COMMA; }
+  "="                      { return ASSIGN; }
+  ":"                      { return COLON; }
+  "+="                     { return PLUS_ASSIGN; }
+  "+"                      { return PLUS; }
+  "-"                      { return MINUS; }
+  "true"                   { return TRUE; }
+  "false"                  { return FALSE; }
 
-  {LINE_COMMENT}                        { return LINE_COMMENT; }
-  {MULTILINE_COMMENT}                   { return MULTILINE_COMMENT; }
-  {STRING}                              { return STRING; }
-  {NUMBER}                              { return NUMBER; }
+  {NAME}                   { return NAME; }
+  {LINE_COMMENT}           { return LINE_COMMENT; }
+  {MULTILINE_COMMENT}      { return MULTILINE_COMMENT; }
+  {STRING}                 { return STRING; }
+  {NUMBER}                 { return NUMBER; }
+  {WS}                     { return WS; }
 
 }
 
