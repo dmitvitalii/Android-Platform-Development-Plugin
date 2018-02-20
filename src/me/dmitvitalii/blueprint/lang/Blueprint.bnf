@@ -31,13 +31,17 @@
         NUMBER              = 'regexp:-?(0|[1-9]\d*)(\.\d+)?([eE][+-]?\d*)?'
         TRUE                = 'true'
         FALSE               = 'false'
+        WS                  = 'regexp:[ \t\n\f\r]+'
     ]
 }
 
 File ::= (variable | module) *
 
-variable ::= NAME assignment value
-module ::= NAME map
+// TODO 1: Too many WS* isn't it? Why doesn't it work by default?
+variable ::= WS* NAME WS* assignment WS* value WS*
+// TODO 2: module != map: android blueprint system will stop a build process if it doesn't recognize a module.
+// TODO 2: But all maps actually can be added with every name we want.
+module ::= WS* NAME WS* map WS*
 
 assignment ::= ASSIGN | PLUS_ASSIGN
 
