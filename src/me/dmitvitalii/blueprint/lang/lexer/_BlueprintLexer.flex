@@ -21,46 +21,40 @@ import static me.dmitvitalii.blueprint.lang.psi.BlueprintType.*;
 %function advance
 %type IElementType
 %unicode
-%eof{  return;
-%eof}
 
-EOL                 = \R
-WHITE_SPACE         = [ \t\f]
-LINE_COMMENT        = "//".*
-MULTILINE_COMMENT   = "/"\*([^*]|\*+[^*/])*(\*+"/")?
-STRING              = \"([^\\\"\r\n]|\\[^\r\n])*\"?
-NUMBER              = -?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]*)?
+EOL=\R
+WHITE_SPACE=\s+
 
-%state MAYBE_SEMICOLON
+LINE_COMMENT="//".*
+MULTILINE_COMMENT="/"\*([^*]|\*+[^*/])*(\*+"/")?
+STRING=\"([^\\\"\r\n]|\\[^\r\n])*\"?
+NUMBER=-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][+-]?[0-9]*)?
 
 %%
-
 <YYINITIAL> {
-  {WHITE_SPACE}         { return WHITE_SPACE; }
-  {EOL}                 { return SEMICOLON_SYNTHETIC; }
-  "{"                   { return LEFT_BRACE; }
-  "}"                   { return RIGHT_BRACE; }
-  "["                   { return LEFT_BRACK; }
-  "]"                   { return RIGHT_BRACK; }
-  ","                   { return COMMA; }
-  "="                   { return ASSIGN; }
-  ":"                   { return COLON; }
-  "!"                   { return NOT; }
-  "+="                  { return PLUS_ASSIGN; }
-  "+"                   { return PLUS; }
-  "-="                  { return MINUS_ASSIGN; }
-  "-"                   { return MINUS; }
-  "<NL>"                { return SEMICOLON_SYNTHETIC; }
-  "true"                { return TRUE; }
-  "false"               { return FALSE; }
-  "CRLF"                { return CRLF; }
-  "KEY"                 { return KEY; }
-  "SEPARATOR"           { return SEPARATOR; }
-  "VALUE"               { return VALUE; }
-  {LINE_COMMENT}        { return LINE_COMMENT; }
-  {MULTILINE_COMMENT}   { return MULTILINE_COMMENT; }
-  {STRING}              { return STRING; }
-  {NUMBER}              { return NUMBER; }
+  {WHITE_SPACE}                         { return WHITE_SPACE; }
+
+  "{"                                   { return LEFT_BRACE; }
+  "}"                                   { return RIGHT_BRACE; }
+  "["                                   { return LEFT_BRACKET; }
+  "]"                                   { return RIGHT_BRACKET; }
+  ","                                   { return COMMA; }
+  "="                                   { return ASSIGN; }
+  ":"                                   { return COLON; }
+  "!"                                   { return NOT; }
+  "+="                                  { return PLUS_ASSIGN; }
+  "+"                                   { return PLUS; }
+  "-"                                   { return MINUS; }
+  "regexpr:[a-zA-Z_][a-zA-Z0-9_]*"      { return NAME; }
+  "true"                                { return TRUE; }
+  "false"                               { return FALSE; }
+  "listitem"                            { return LISTITEM; }
+
+  {LINE_COMMENT}                        { return LINE_COMMENT; }
+  {MULTILINE_COMMENT}                   { return MULTILINE_COMMENT; }
+  {STRING}                              { return STRING; }
+  {NUMBER}                              { return NUMBER; }
+
 }
 
 [^] { return BAD_CHARACTER; }

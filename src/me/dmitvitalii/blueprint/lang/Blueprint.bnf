@@ -15,17 +15,16 @@
     tokens = [
         LEFT_BRACE          = '{'
         RIGHT_BRACE         = '}'
-        LEFT_BRACK          = '['
-        RIGHT_BRACK         = ']'
+        LEFT_BRACKET        = '['
+        RIGHT_BRACKET       = ']'
         COMMA               = ','
         ASSIGN              = '='
         COLON               = ':'
         NOT                 = '!'
         PLUS_ASSIGN         = '+='
         PLUS                = '+'
-        MINUS_ASSIGN        = '-='
         MINUS               = '-'
-        SEMICOLON_SYNTHETIC = '<NL>'
+        NAME                = 'regexpr:[a-zA-Z_][a-zA-Z0-9_]*'
         LINE_COMMENT        = 'regexp://.*'
         MULTILINE_COMMENT   = 'regexp:/\*([^*]|\*+[^*/])*(\*+/)?'
         STRING              = 'regexp:\"([^\\\"\r\n]|\\[^\r\n])*\"?'
@@ -35,6 +34,21 @@
     ]
 }
 
-blueprintFile ::= item_*
-private item_ ::= (property|LINE_COMMENT|MULTILINE_COMMENT|CRLF)
-property ::= (KEY? SEPARATOR VALUE?) | KEY
+File ::= (variable | module) *
+
+variable ::= NAME assignment value
+module ::= NAME map
+
+assignment ::= ASSIGN | PLUS_ASSIGN
+
+struct ::= map | list
+
+// We only have lists of strings
+list ::= LEFT_BRACKET !listitem! RIGHT_BRACKET
+// Unlike lists, we can have a map of any type
+map ::= LEFT_BRACE mapItems RIGHT_BRACE
+
+mapItems ::= mapItem COMMA? | mapItem COMMA mapItems
+mapItem ::= NAME COLON value
+
+value ::= STRING | TRUE | FALSE | struct
