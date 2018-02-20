@@ -48,11 +48,13 @@ assignment ::= ASSIGN | PLUS_ASSIGN
 struct ::= map | list
 
 // We only have lists of strings
-list ::= LEFT_BRACKET !listitem! RIGHT_BRACKET
+list ::= LEFT_BRACKET listItems RIGHT_BRACKET
 // Unlike lists, we can have a map of any type
 map ::= LEFT_BRACE mapItems RIGHT_BRACE
 
-mapItems ::= mapItem COMMA? | mapItem COMMA mapItems
+mapItems ::= mapItem COMMA mapItems | mapItem COMMA?
 mapItem ::= NAME COLON value
+
+listItems ::= WS* STRING WS* COMMA WS* listItems WS* | WS* STRING WS* COMMA? WS*
 
 value ::= STRING | TRUE | FALSE | struct
