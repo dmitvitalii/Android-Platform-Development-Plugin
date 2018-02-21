@@ -46,8 +46,6 @@ WS=[ \t\n\f\r]+
   "+="                     { return PLUS_ASSIGN; }
   "+"                      { return PLUS; }
   "-"                      { return MINUS; }
-  "true"                   { return TRUE; }
-  "false"                  { return FALSE; }
 
   {NAME}                   { return NAME; }
   {LINE_COMMENT}           { return LINE_COMMENT; }
