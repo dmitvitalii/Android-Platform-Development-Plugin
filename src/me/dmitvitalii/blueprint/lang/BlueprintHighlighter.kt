@@ -15,7 +15,6 @@
  */
 package me.dmitvitalii.blueprint.lang
 
-import com.intellij.openapi.editor.colors.TextAttributesKey
 import com.intellij.openapi.fileTypes.SyntaxHighlighterBase
 import com.intellij.openapi.fileTypes.SyntaxHighlighterFactory
 import com.intellij.openapi.project.Project
@@ -23,24 +22,22 @@ import com.intellij.openapi.vfs.VirtualFile
 import com.intellij.psi.tree.IElementType
 import me.dmitvitalii.blueprint.lang.lexer.BlueprintLexerAdapter
 import me.dmitvitalii.blueprint.lang.psi.BlueprintType
+import me.dmitvitalii.blueprint.mapTo
 import com.intellij.openapi.editor.DefaultLanguageHighlighterColors as DefaultColors
-import com.intellij.openapi.editor.colors.TextAttributesKey.createTextAttributesKey as createKey
 
 class BlueprintHighlighter : SyntaxHighlighterBase() {
 
-  override fun getTokenHighlights(token: IElementType) = when (token) {
-    BlueprintType.COLON             -> token mapTo DefaultColors.COMMA
-    BlueprintType.COMMA             -> token mapTo DefaultColors.COMMA
-    BlueprintType.ASSIGNMENT        -> token mapTo DefaultColors.OPERATION_SIGN
-    BlueprintType.NUMBER            -> token mapTo DefaultColors.NUMBER
-    BlueprintType.STRING            -> token mapTo DefaultColors.STRING
-    BlueprintType.BOOLEAN           -> token mapTo DefaultColors.KEYWORD
-    BlueprintType.LINE_COMMENT      -> token mapTo DefaultColors.LINE_COMMENT
-    BlueprintType.MULTILINE_COMMENT -> token mapTo DefaultColors.BLOCK_COMMENT
+  override fun getTokenHighlights(element: IElementType) = when (element) {
+    BlueprintType.COLON             -> element mapTo DefaultColors.COMMA
+    BlueprintType.COMMA             -> element mapTo DefaultColors.COMMA
+    BlueprintType.NUMBER            -> element mapTo DefaultColors.NUMBER
+    BlueprintType.STRING            -> element mapTo DefaultColors.STRING
+    BlueprintType.BOOLEAN           -> element mapTo DefaultColors.KEYWORD
+    BlueprintType.ASSIGNMENT        -> element mapTo DefaultColors.OPERATION_SIGN
+    BlueprintType.LINE_COMMENT      -> element mapTo DefaultColors.LINE_COMMENT
+    BlueprintType.MULTILINE_COMMENT -> element mapTo DefaultColors.BLOCK_COMMENT
     else -> arrayOf()
   }
-
-  infix private fun IElementType.mapTo(color: TextAttributesKey) = arrayOf(createKey("BLUEPRINT_${toString()}", color))
 
   override fun getHighlightingLexer() = BlueprintLexerAdapter()
 
