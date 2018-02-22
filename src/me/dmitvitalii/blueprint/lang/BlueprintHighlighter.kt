@@ -17,13 +17,34 @@ package me.dmitvitalii.blueprint.lang
 
 import com.intellij.openapi.editor.colors.TextAttributesKey
 import com.intellij.openapi.fileTypes.SyntaxHighlighterBase
+import com.intellij.openapi.fileTypes.SyntaxHighlighterFactory
+import com.intellij.openapi.project.Project
+import com.intellij.openapi.vfs.VirtualFile
 import com.intellij.psi.tree.IElementType
 import me.dmitvitalii.blueprint.lang.lexer.BlueprintLexerAdapter
+import me.dmitvitalii.blueprint.lang.psi.BlueprintType
+import com.intellij.openapi.editor.DefaultLanguageHighlighterColors as DefaultColors
+import com.intellij.openapi.editor.colors.TextAttributesKey.createTextAttributesKey as createKey
 
 class BlueprintHighlighter : SyntaxHighlighterBase() {
-  override fun getTokenHighlights(tokenType: IElementType): Array<TextAttributesKey> {
-    throw UnsupportedOperationException("Not implemented")
+
+  // TODO: separate rule for colon
+  override fun getTokenHighlights(token: IElementType) = when (token) {
+    BlueprintType.COLON,
+    BlueprintType.COMMA             -> token mapTo DefaultColors.COMMA
+    BlueprintType.ASSIGNMENT        -> token mapTo DefaultColors.OPERATION_SIGN
+    BlueprintType.NUMBER            -> token mapTo DefaultColors.NUMBER
+    BlueprintType.STRING            -> token mapTo DefaultColors.STRING
+    BlueprintType.LINE_COMMENT      -> token mapTo DefaultColors.LINE_COMMENT
+    BlueprintType.MULTILINE_COMMENT -> token mapTo DefaultColors.BLOCK_COMMENT
+    else -> arrayOf()
   }
 
+  infix private fun IElementType.mapTo(color: TextAttributesKey) = arrayOf(createKey("BLUEPRINT_${toString()}", color))
+
   override fun getHighlightingLexer() = BlueprintLexerAdapter()
+
+  companion object : SyntaxHighlighterFactory() {
+    override fun getSyntaxHighlighter(project: Project?, file: VirtualFile?) = BlueprintHighlighter()
+  }
 }
