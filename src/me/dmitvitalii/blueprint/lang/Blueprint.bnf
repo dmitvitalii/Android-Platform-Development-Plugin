@@ -54,5 +54,7 @@ mapItem ::= WS* IDENTIFIER WS* COLON WS* value WS*
 
 listItems ::= WS* STRING WS* COMMA WS* listItems WS* | WS* STRING WS* COMMA? WS*
 
-value ::= stringItem | NUMBER | 'true' | 'false' | struct
+boolean ::= 'true' | 'false'
+
+value ::= stringItem | NUMBER | boolean | struct
 stringItem ::= WS* STRING WS* PLUS WS* stringItem WS* | STRING

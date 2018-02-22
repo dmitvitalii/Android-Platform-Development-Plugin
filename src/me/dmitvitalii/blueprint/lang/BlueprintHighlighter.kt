@@ -34,6 +34,7 @@ class BlueprintHighlighter : SyntaxHighlighterBase() {
     BlueprintType.ASSIGNMENT        -> token mapTo DefaultColors.OPERATION_SIGN
     BlueprintType.NUMBER            -> token mapTo DefaultColors.NUMBER
     BlueprintType.STRING            -> token mapTo DefaultColors.STRING
+    BlueprintType.BOOLEAN           -> token mapTo DefaultColors.KEYWORD
     BlueprintType.LINE_COMMENT      -> token mapTo DefaultColors.LINE_COMMENT
     BlueprintType.MULTILINE_COMMENT -> token mapTo DefaultColors.BLOCK_COMMENT
     else -> arrayOf()
