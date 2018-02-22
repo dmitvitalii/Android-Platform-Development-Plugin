@@ -25,7 +25,7 @@ import static me.dmitvitalii.blueprint.lang.psi.BlueprintType.*;
 EOL=\R
 WHITE_SPACE=\s+
 
-NAME=[a-zA-Z_][a-zA-Z0-9_]*
+IDENTIFIER=[a-zA-Z_][a-zA-Z0-9_]*
 LINE_COMMENT="//".*
 MULTILINE_COMMENT="/"\*([^*]|\*+[^*/])*(\*+"/")?
 STRING=\"[^\"]*\"
@@ -47,7 +47,7 @@ WS=[ \t\n\f\r]+
   "+"                      { return PLUS; }
   "-"                      { return MINUS; }
 
-  {NAME}                   { return NAME; }
+  {IDENTIFIER}             { return IDENTIFIER; }
   {LINE_COMMENT}           { return LINE_COMMENT; }
   {MULTILINE_COMMENT}      { return MULTILINE_COMMENT; }
   {STRING}                 { return STRING; }

@@ -23,7 +23,7 @@
         PLUS_ASSIGN         = '+='
         PLUS                = '+'
         MINUS               = '-'
-        NAME                = 'regexp:[a-zA-Z_][a-zA-Z0-9_]*'
+        IDENTIFIER          = 'regexp:[a-zA-Z_][a-zA-Z0-9_]*'
         LINE_COMMENT        = 'regexp://.*'
         MULTILINE_COMMENT   = 'regexp:/\*([^*]|\*+[^*/])*(\*+/)?'
         STRING              = 'regexp:"[^"]*"'
@@ -35,24 +35,24 @@
 File ::= (variable | module) *
 
 // TODO 1: Too many WS* isn't it? Why doesn't it work by default?
-variable ::= WS* NAME WS* assignment WS* value WS*
+variable ::= WS* IDENTIFIER WS* assignment WS* value WS*
 // TODO 2: module != map: android blueprint system will stop a build process if it doesn't recognize a module.
 // TODO 2: But all maps actually can be added with every name we want.
-module ::= WS* NAME WS* map WS*
+module ::= WS* IDENTIFIER WS* map WS*
 
 assignment ::= ASSIGN | PLUS_ASSIGN
 
 struct ::= map | list
 
 // We only have lists of strings
-list ::= LEFT_BRACKET listItems RIGHT_BRACKET
+list ::= LEFT_BRACKET listItems? RIGHT_BRACKET
 // Unlike lists, we can have a map of any type
-map ::= LEFT_BRACE mapItems RIGHT_BRACE
+map ::= LEFT_BRACE mapItems? RIGHT_BRACE
 
 mapItems ::= WS* mapItem WS* COMMA WS* mapItems WS* | WS* mapItem WS* COMMA? WS*
-mapItem ::= WS* NAME WS* COLON WS* value WS*
+mapItem ::= WS* IDENTIFIER WS* COLON WS* value WS*
 
 listItems ::= WS* STRING WS* COMMA WS* listItems WS* | WS* STRING WS* COMMA? WS*
 
-value ::= string | NUMBER | 'true' | 'false' | struct
-string ::= WS* STRING WS* PLUS WS* string WS* | STRING
+value ::= stringItem | NUMBER | 'true' | 'false' | struct
+stringItem ::= WS* STRING WS* PLUS WS* stringItem WS* | STRING
