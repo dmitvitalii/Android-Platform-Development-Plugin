@@ -28,9 +28,8 @@ import com.intellij.openapi.editor.colors.TextAttributesKey.createTextAttributes
 
 class BlueprintHighlighter : SyntaxHighlighterBase() {
 
-  // TODO: separate rule for colon
   override fun getTokenHighlights(token: IElementType) = when (token) {
-    BlueprintType.COLON,
+    BlueprintType.COLON             -> token mapTo DefaultColors.COMMA
     BlueprintType.COMMA             -> token mapTo DefaultColors.COMMA
     BlueprintType.ASSIGNMENT        -> token mapTo DefaultColors.OPERATION_SIGN
     BlueprintType.NUMBER            -> token mapTo DefaultColors.NUMBER
