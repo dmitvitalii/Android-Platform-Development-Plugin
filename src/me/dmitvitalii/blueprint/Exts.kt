@@ -19,6 +19,6 @@ import com.intellij.openapi.editor.colors.TextAttributesKey
 import com.intellij.psi.tree.IElementType
 import com.intellij.openapi.editor.colors.TextAttributesKey.createTextAttributesKey as createKey
 
-infix fun IElementType.mapTo(color: TextAttributesKey) = arrayOf(createKey("BLUEPRINT_${toString()}", color))
+fun IElementType.createKeys(default: TextAttributesKey) = arrayOf(createKey("BLUEPRINT_${toString()}", default))
 
 fun IElementType.asKey() = createKey("BLUEPRINT_${toString()}")

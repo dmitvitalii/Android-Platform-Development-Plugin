@@ -22,20 +22,20 @@ import com.intellij.openapi.vfs.VirtualFile
 import com.intellij.psi.tree.IElementType
 import me.dmitvitalii.blueprint.lang.lexer.BlueprintLexerAdapter
 import me.dmitvitalii.blueprint.lang.psi.BlueprintType
-import me.dmitvitalii.blueprint.mapTo
+import me.dmitvitalii.blueprint.createKeys
 import com.intellij.openapi.editor.DefaultLanguageHighlighterColors as DefaultColors
 
 class BlueprintHighlighter : SyntaxHighlighterBase() {
 
   override fun getTokenHighlights(element: IElementType) = when (element) {
-    BlueprintType.COLON             -> element mapTo DefaultColors.COMMA
-    BlueprintType.COMMA             -> element mapTo DefaultColors.COMMA
-    BlueprintType.NUMBER            -> element mapTo DefaultColors.NUMBER
-    BlueprintType.STRING            -> element mapTo DefaultColors.STRING
-    BlueprintType.BOOLEAN           -> element mapTo DefaultColors.KEYWORD
-    BlueprintType.ASSIGNMENT        -> element mapTo DefaultColors.OPERATION_SIGN
-    BlueprintType.LINE_COMMENT      -> element mapTo DefaultColors.LINE_COMMENT
-    BlueprintType.MULTILINE_COMMENT -> element mapTo DefaultColors.BLOCK_COMMENT
+    BlueprintType.COLON             -> element.createKeys(DefaultColors.COMMA)
+    BlueprintType.COMMA             -> element.createKeys(DefaultColors.COMMA)
+    BlueprintType.NUMBER            -> element.createKeys(DefaultColors.NUMBER)
+    BlueprintType.STRING            -> element.createKeys(DefaultColors.STRING)
+    BlueprintType.BOOLEAN           -> element.createKeys(DefaultColors.KEYWORD)
+    BlueprintType.ASSIGNMENT        -> element.createKeys(DefaultColors.OPERATION_SIGN)
+    BlueprintType.LINE_COMMENT      -> element.createKeys(DefaultColors.LINE_COMMENT)
+    BlueprintType.MULTILINE_COMMENT -> element.createKeys(DefaultColors.BLOCK_COMMENT)
     else -> arrayOf()
   }
 

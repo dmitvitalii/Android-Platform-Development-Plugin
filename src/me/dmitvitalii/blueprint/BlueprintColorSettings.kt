@@ -38,12 +38,12 @@ class BlueprintColorSettings : ColorSettingsPage {
   override fun getAttributeDescriptors() = arrayOf(
     AttributesDescriptor("Colon", BlueprintType.COLON.asKey()),
     AttributesDescriptor("Comma", BlueprintType.COMMA.asKey()),
-    AttributesDescriptor("Assignment", BlueprintType.ASSIGNMENT.asKey()),
     AttributesDescriptor("Number", BlueprintType.NUMBER.asKey()),
     AttributesDescriptor("String", BlueprintType.STRING.asKey()),
     AttributesDescriptor("Boolean", BlueprintType.BOOLEAN.asKey()),
-    AttributesDescriptor("Line_comment", BlueprintType.LINE_COMMENT.asKey()),
-    AttributesDescriptor("Multiline_comment", BlueprintType.MULTILINE_COMMENT.asKey())
+    AttributesDescriptor("Assignment", BlueprintType.ASSIGNMENT.asKey()),
+    AttributesDescriptor("Line comment", BlueprintType.LINE_COMMENT.asKey()),
+    AttributesDescriptor("Multiline comment", BlueprintType.MULTILINE_COMMENT.asKey())
   )
 
   override fun getDisplayName() = fileType.name
@@ -60,6 +60,7 @@ class BlueprintColorSettings : ColorSettingsPage {
       |module {
       |    string: "superlibrary",
       |    boolean: true,
+      |    super_boolean: false,
       |    numbers: 42,
       |}
       |
