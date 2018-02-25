@@ -34,11 +34,10 @@
 
 File ::= (variable | module) *
 
-// TODO 1: Too many WS* isn't it? Why doesn't it work by default?
-variable ::= WS* IDENTIFIER WS* assignment WS* value WS*
-// TODO 2: module != map: android blueprint system will stop a build process if it doesn't recognize a module.
-// TODO 2: But all maps actually can be added with every name we want.
-module ::= WS* IDENTIFIER WS* map WS*
+variable ::=  IDENTIFIER  assignment  value
+// TODO: module != map: android blueprint system will stop a build process if it doesn't recognize a module.
+// TODO: But all maps actually can be added with every name we want.
+module ::=  IDENTIFIER  map
 
 assignment ::= ASSIGN | PLUS_ASSIGN
 
@@ -49,12 +48,12 @@ list ::= LEFT_BRACKET listItems? RIGHT_BRACKET
 // Unlike lists, we can have a map of any type
 map ::= LEFT_BRACE mapItems? RIGHT_BRACE
 
-mapItems ::= WS* mapItem WS* COMMA WS* mapItems WS* | WS* mapItem WS* COMMA? WS*
-mapItem ::= WS* IDENTIFIER WS* COLON WS* value WS*
+mapItems ::=  mapItem  COMMA  mapItems  |  mapItem  COMMA?
+mapItem ::=  IDENTIFIER  COLON  value
 
-listItems ::= WS* STRING WS* COMMA WS* listItems WS* | WS* STRING WS* COMMA? WS*
+listItems ::=  STRING  COMMA  listItems  |  STRING  COMMA?
 
 boolean ::= 'true' | 'false'
 
 value ::= stringItem | NUMBER | boolean | struct
-stringItem ::= WS* STRING WS* PLUS WS* stringItem WS* | STRING
+stringItem ::=  STRING  PLUS  stringItem  | STRING
