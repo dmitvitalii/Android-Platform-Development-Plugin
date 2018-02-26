@@ -8,8 +8,8 @@
     psiImplPackage="me.dmitvitalii.blueprint.lang.psi.impl"
 
     elementTypeHolderClass="me.dmitvitalii.blueprint.lang.psi.BlueprintType"
-    elementTypeClass="me.dmitvitalii.blueprint.lang.psi.BlueprintElementType"
-    tokenTypeClass="me.dmitvitalii.blueprint.lang.psi.BlueprintTokenType"
+    elementTypeClass="me.dmitvitalii.blueprint.lang.BlueprintElementType"
+    tokenTypeClass="me.dmitvitalii.blueprint.lang.BlueprintTokenType"
 
 
     tokens = [

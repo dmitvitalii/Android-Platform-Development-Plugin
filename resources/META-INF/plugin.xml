@@ -16,7 +16,7 @@
     <idea-version since-build="162.0"/>
 
     <extensions defaultExtensionNs="com.intellij">
-        <fileTypeFactory implementation="me.dmitvitalii.blueprint.lang.psi.BlueprintFileTypeFactory"/>
+        <fileTypeFactory implementation="me.dmitvitalii.blueprint.lang.BlueprintFileTypeFactory"/>
         <lang.parserDefinition language="Blueprint" implementationClass="me.dmitvitalii.blueprint.lang.BlueprintParserDefinition"/>
         <lang.syntaxHighlighterFactory language="Blueprint" implementationClass="me.dmitvitalii.blueprint.lang.BlueprintHighlighter$Companion"/>
         <colorSettingsPage implementation="me.dmitvitalii.blueprint.BlueprintColorSettings"/>

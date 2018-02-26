@@ -20,7 +20,6 @@ import com.intellij.openapi.fileTypes.SyntaxHighlighterFactory
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.vfs.VirtualFile
 import com.intellij.psi.tree.IElementType
-import me.dmitvitalii.blueprint.lang.lexer.BlueprintLexerAdapter
 import me.dmitvitalii.blueprint.lang.psi.BlueprintType
 import me.dmitvitalii.blueprint.createKeys
 import com.intellij.openapi.editor.DefaultLanguageHighlighterColors as DefaultColors

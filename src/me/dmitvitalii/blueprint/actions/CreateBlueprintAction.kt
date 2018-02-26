@@ -17,13 +17,10 @@ package me.dmitvitalii.blueprint.actions
 
 import com.intellij.ide.actions.CreateFileFromTemplateAction
 import com.intellij.ide.actions.CreateFileFromTemplateDialog
-import com.intellij.openapi.fileEditor.FileDocumentManager
-import com.intellij.openapi.fileEditor.FileEditorManager
 import com.intellij.openapi.project.DumbAware
 import com.intellij.openapi.project.Project
 import com.intellij.psi.PsiDirectory
-import com.intellij.psi.PsiFile
-import me.dmitvitalii.blueprint.lang.psi.BlueprintFileType
+import me.dmitvitalii.blueprint.lang.BlueprintFileType
 
 /**
  * TODO: if we create non-default constructor with BlueprintFileType instance passed,

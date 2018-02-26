@@ -1,4 +1,4 @@
-package me.dmitvitalii.blueprint.lang.lexer;
+package me.dmitvitalii.blueprint.lang;
 
 import com.intellij.lexer.FlexLexer;
 import com.intellij.psi.tree.IElementType;

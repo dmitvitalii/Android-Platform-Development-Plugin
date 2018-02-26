@@ -22,9 +22,6 @@ import com.intellij.psi.FileViewProvider
 import com.intellij.psi.TokenType
 import com.intellij.psi.tree.IFileElementType
 import com.intellij.psi.tree.TokenSet
-import me.dmitvitalii.blueprint.lang.lexer.BlueprintLexerAdapter
-import me.dmitvitalii.blueprint.lang.psi.BlueprintFile
-import me.dmitvitalii.blueprint.lang.psi.BlueprintLanguage
 import me.dmitvitalii.blueprint.lang.psi.BlueprintType
 
 /**

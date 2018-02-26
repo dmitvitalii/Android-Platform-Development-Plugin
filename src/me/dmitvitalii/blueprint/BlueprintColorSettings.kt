@@ -19,7 +19,7 @@ import com.intellij.openapi.options.colors.AttributesDescriptor
 import com.intellij.openapi.options.colors.ColorDescriptor
 import com.intellij.openapi.options.colors.ColorSettingsPage
 import me.dmitvitalii.blueprint.lang.BlueprintHighlighter
-import me.dmitvitalii.blueprint.lang.psi.BlueprintFileType
+import me.dmitvitalii.blueprint.lang.BlueprintFileType
 import me.dmitvitalii.blueprint.lang.psi.BlueprintType
 import com.intellij.openapi.editor.colors.TextAttributesKey.createTextAttributesKey as createKey
 

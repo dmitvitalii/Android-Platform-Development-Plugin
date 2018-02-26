@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package me.dmitvitalii.blueprint.lang.psi
+package me.dmitvitalii.blueprint.lang
 
 import com.intellij.extapi.psi.PsiFileBase
 import com.intellij.icons.AllIcons
