@@ -20,6 +20,7 @@
         <lang.parserDefinition language="Blueprint" implementationClass="me.dmitvitalii.blueprint.lang.BlueprintParserDefinition"/>
         <lang.syntaxHighlighterFactory language="Blueprint" implementationClass="me.dmitvitalii.blueprint.lang.BlueprintHighlighter$Companion"/>
         <colorSettingsPage implementation="me.dmitvitalii.blueprint.BlueprintColorSettings"/>
+        <completion.contributor language="Blueprint" implementationClass="me.dmitvitalii.blueprint.BlueprintCompletion"/>
     </extensions>
 
 

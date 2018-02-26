@@ -17,8 +17,16 @@ package me.dmitvitalii.blueprint
 
 import com.intellij.openapi.editor.colors.TextAttributesKey
 import com.intellij.psi.tree.IElementType
+import java.io.File
 import com.intellij.openapi.editor.colors.TextAttributesKey.createTextAttributesKey as createKey
 
 fun IElementType.createKeys(default: TextAttributesKey) = arrayOf(createKey("BLUEPRINT_${toString()}", default))
 
 fun IElementType.asKey() = createKey("BLUEPRINT_${toString()}")
+
+fun File.findLines(): Iterable<String> {
+  val stream = inputStream()
+  val list = mutableListOf<String>()
+  stream.bufferedReader().useLines { lines -> lines.forEach { list.add(it) } }
+  return list
+}
