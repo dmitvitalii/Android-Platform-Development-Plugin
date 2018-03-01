@@ -32,7 +32,7 @@ class BlueprintCompletion : CompletionContributor() {
         object : CompletionProvider<CompletionParameters>() {
           override fun addCompletions(params: CompletionParameters, context: ProcessingContext, result: CompletionResultSet) {
             // TODO: take module names from blueprint instead of txt file. They can be different.
-            File(this::class.java.getResource("/module_names").toURI())
+            File(this::class.java.getResource("/failsafe_module_names").toURI())
                 .findLines()
                 .forEach { line -> result.addElement(LookupElementBuilder.create(line)) }
           }
