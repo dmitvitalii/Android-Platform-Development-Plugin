@@ -18,7 +18,7 @@ Work in progress.
 * Use `bpfmt` formatter;
 * Platform project structure and dependency control support;
 * New platform application template;
-* Closer integration with the out/ directory;
+* Integration with the out/ directory;
 * Create Java/C++ system service with/without lifecycle;
 * Work with SELinux policies (adding/deleting rules);
 * HIDL support (if Google won't develop it earlier);
