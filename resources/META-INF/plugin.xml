@@ -17,12 +17,12 @@
 
     <extensions defaultExtensionNs="com.intellij">
         <fileTypeFactory implementation="me.dmitvitalii.blueprint.lang.BlueprintFileTypeFactory"/>
+        <lang.commenter language="Blueprint" implementationClass="me.dmitvitalii.blueprint.BlueprintCommenter"/>
         <lang.parserDefinition language="Blueprint" implementationClass="me.dmitvitalii.blueprint.lang.BlueprintParserDefinition"/>
         <lang.syntaxHighlighterFactory language="Blueprint" implementationClass="me.dmitvitalii.blueprint.lang.BlueprintHighlighter$Companion"/>
         <colorSettingsPage implementation="me.dmitvitalii.blueprint.BlueprintColorSettings"/>
         <completion.contributor language="Blueprint" implementationClass="me.dmitvitalii.blueprint.BlueprintCompletion"/>
     </extensions>
-
 
     <actions>
         <group id="APDP.SampleMenu" text="_Sample Menu" description="Sample Menu">
