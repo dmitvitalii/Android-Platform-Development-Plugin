@@ -11,6 +11,7 @@
     elementTypeClass="me.dmitvitalii.blueprint.lang.BlueprintElementType"
     tokenTypeClass="me.dmitvitalii.blueprint.lang.BlueprintTokenType"
 
+    psiImplUtilClass="me.dmitvitalii.blueprint.BlueprintPsiUtil"
 
     tokens = [
         LEFT_BRACE          = '{'
