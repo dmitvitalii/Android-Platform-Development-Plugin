@@ -11,8 +11,11 @@ and so on, and so forth. This plugin is to resolve this issue and give a nice to
 
 Work in progress.
 
+## DONE
+* `Android.bp` support: highlighting
+
 ## TODO
-* `Android.bp` support: highlighting, autocomplete for known variables and C flags;
+* `Android.bp` support: autocomplete for known variables and C flags;
 * `Android.mk` support: same as for `Android.bp`;
 * `Android.mk` -> `Android.bp` from context menu using `androidmk` tool;
 * Use `bpfmt` formatter;
@@ -21,13 +24,13 @@ Work in progress.
 * Integration with the out/ directory;
 * Create Java/C++ system service with/without lifecycle;
 * Work with SELinux policies (adding/deleting rules);
-* HIDL support (if Google won't develop it earlier);
+* Trebble: HIDL support;
 * Tool for installing/pushing projects on a device: for libraries, binaries, system apps, native libs etc.
 
 ## License
 
 ```
-Copyright 2018 Vitalii Dmitriev
+Copyright © 2018 Vitalii Dmitriev
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
