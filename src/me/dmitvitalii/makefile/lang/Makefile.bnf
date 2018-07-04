@@ -1,0 +1,49 @@
+{
+    parserClass="me.dmitvitalii.makefile.lang.MakefileParser"
+    extends="com.intellij.extapi.psi.ASTWrapperPsiElement"
+
+    psiClassPrefix="Makefile"
+    psiImplClassSuffix="Impl"
+    psiPackage="me.dmitvitalii.makefile.lang.psi"
+    psiImplPackage="me.dmitvitalii.makefile.lang.psi.impl"
+
+    elementTypeHolderClass="me.dmitvitalii.makefile.lang.psi.MakefileType"
+    elementTypeClass="me.dmitvitalii.makefile.lang.MakefileElementType"
+    tokenTypeClass="me.dmitvitalii.makefile.lang.MakefileTokenType"
+
+    psiImplUtilClass="me.dmitvitalii.makefile.MakefilePsiUtil"
+
+    tokens = [
+        PARENTHESIS_START   = '('
+        PARENTHESIS_END     = ')'
+        COMMA               = ','
+        COLON               = ':'
+        ASSIGN              = '='
+        PLUS_ASSIGN         = '+='
+        COLON_ASSIGN        = ':='
+        PLUS                = '+'
+        MINUS               = '-'
+        SLASH               = '/'
+
+        // A function, e.g. $(call my-dir), or a variable, e.g. $(LOCAL_PATH)
+        CALLEE_START        = '$('
+        CALLEE_END          = ')'
+
+        IDENTIFIER          = 'regexp:[a-zA-Z_][a-zA-Z0-9_]*'
+        LINE_COMMENT        = 'regexp://.*'
+        MULTILINE_COMMENT   = 'regexp:/\*([^*]|\*+[^*/])*(\*+/)?'
+        STRING              = 'regexp:"[^"]*"'
+        NUMBER              = 'regexp:-?(0|[1-9]\d*)(\.\d+)?([eE][+-]?\d*)?'
+        WS                  = 'regexp:[ \t\n\f\r]+'
+
+        KEYWORD_INCLUDE     = 'include'
+        KEYWORD_DEFINE      = 'define'
+        KEYWORD_IFEQ        = 'ifeq'
+        KEYWORD_IFNEQ       = 'ifneq'
+        KEYWORD_IFDEF       = 'ifdef'
+        KEYWORD_IFNDEF      = 'ifndef'
+        KEYWORD_ELSE        = 'else'
+        KEYWORD_ENDIF       = 'endif'
+        KEYWORD_ENDEF       = 'endef'
+    ]
+}
