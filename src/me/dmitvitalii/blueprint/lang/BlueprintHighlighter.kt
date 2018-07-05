@@ -27,7 +27,7 @@ import com.intellij.openapi.editor.DefaultLanguageHighlighterColors as DefaultCo
 class BlueprintHighlighter : SyntaxHighlighterBase() {
 
   override fun getTokenHighlights(element: IElementType) = when (element) {
-    BlueprintType.COLON             -> element.createKeys(DefaultColors.COMMA)
+    BlueprintType.COLON,
     BlueprintType.COMMA             -> element.createKeys(DefaultColors.COMMA)
     BlueprintType.NUMBER            -> element.createKeys(DefaultColors.NUMBER)
     BlueprintType.STRING            -> element.createKeys(DefaultColors.STRING)
