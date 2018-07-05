@@ -12,20 +12,7 @@ and so on, and so forth. This plugin is to resolve this issue and give a nice to
 Work in progress.
 
 ## DONE
-* `Android.bp` support: highlighting
-
-## TODO
-* `Android.bp` support: autocomplete for known variables and C flags;
-* `Android.mk` support: same as for `Android.bp`;
-* `Android.mk` -> `Android.bp` from context menu using `androidmk` tool;
-* Use `bpfmt` formatter;
-* Platform project structure and dependency control support;
-* New platform application template;
-* Integration with the out/ directory;
-* Create Java/C++ system service with/without lifecycle;
-* Work with SELinux policies (adding/deleting rules);
-* Trebble: HIDL support;
-* Tool for installing/pushing projects on a device: for libraries, binaries, system apps, native libs etc.
+* `Android.bp` support: highlighting & dummy autocomplete
 
 ## License
 
