@@ -1,0 +1,43 @@
+buildscript {
+    ext.kotlinVersion = '1.2.51'
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
+    }
+}
+
+plugins {
+    id "org.jetbrains.intellij" version "0.3.2"
+}
+
+apply plugin: 'idea'
+apply plugin: 'org.jetbrains.intellij'
+apply plugin: 'java'
+apply plugin: 'kotlin'
+
+group 'me.dmitvitalii'
+version '0.2'
+
+intellij {
+    version 'IC-2016.1'
+    pluginName 'Android-Platform-Development-Plugin'
+}
+
+sourceSets {
+    main {
+        java.srcDir 'src/main/java'
+        kotlin.srcDir 'src/main/kotlin'
+        resources.srcDir 'src/main/res'
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion"
+    compile "org.jetbrains.kotlin:kotlin-reflect:$kotlinVersion"
+}
