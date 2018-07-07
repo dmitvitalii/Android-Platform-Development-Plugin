@@ -18,6 +18,7 @@ package me.dmitvitalii.blueprint.lang
 import com.intellij.extapi.psi.PsiFileBase
 import com.intellij.icons.AllIcons
 import com.intellij.lang.Language
+import com.intellij.lexer.FlexAdapter
 import com.intellij.openapi.fileTypes.FileTypeConsumer
 import com.intellij.openapi.fileTypes.FileTypeFactory
 import com.intellij.openapi.fileTypes.LanguageFileType
@@ -66,3 +67,5 @@ class BlueprintFile(provider: FileViewProvider) : PsiFileBase(provider, Blueprin
 
   override fun toString() = fileType.name
 }
+
+class BlueprintLexerAdapter : FlexAdapter(BlueprintLexer(null))
