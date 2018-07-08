@@ -24,6 +24,7 @@
         PLUS                = '+'
         MINUS               = '-'
         SLASH               = '/'
+        SEMICOLON           = ";"
 
         // A function, e.g. $(call my-dir), or a variable, e.g. $(LOCAL_PATH)
         CALLEE_START        = '$('
@@ -37,13 +38,30 @@
         WS                  = 'regexp:[ \t\n\f\r]+'
 
         KEYWORD_INCLUDE     = 'include'
+        KEYWORD_MINCLUDE    = '-include'
+        KEYWORD_CINCLUDE    = 'sinclude'
         KEYWORD_DEFINE      = 'define'
-        KEYWORD_IFEQ        = 'ifeq'
-        KEYWORD_IFNEQ       = 'ifneq'
         KEYWORD_IFDEF       = 'ifdef'
         KEYWORD_IFNDEF      = 'ifndef'
+        KEYWORD_IFEQ        = 'ifeq'
+        KEYWORD_IFNEQ       = 'ifneq'
         KEYWORD_ELSE        = 'else'
         KEYWORD_ENDIF       = 'endif'
         KEYWORD_ENDEF       = 'endef'
+        KEYWORD_OVERRIDE    = 'override'
+        KEYWORD_EXPORT      = 'export'
+        KEYWORD_UNEXPORT    = 'unexport'
+
     ]
 }
+
+File ::= (variable | directive)
+
+variable ::= IDENTIFIER assign STRING
+directive ::= (include
+              | KEYWORD_DEFINE | KEYWORD_OVERRIDE
+              | KEYWORD_EXPORT | KEYWORD_UNEXPORT)
+
+include ::= (KEYWORD_INCLUDE | KEYWORD_MINCLUDE | KEYWORD_CINCLUDE) IDENTIFIER
+
+assign ::= (ASSIGN | PLUS_ASSIGN | COLON_ASSIGN)
