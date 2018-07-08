@@ -16,16 +16,31 @@
     <idea-version since-build="162.0"/>
 
     <extensions defaultExtensionNs="com.intellij">
+        <!--Factories-->
         <fileTypeFactory implementation="me.dmitvitalii.blueprint.lang.BlueprintFileTypeFactory"/>
+        <fileTypeFactory implementation="me.dmitvitalii.makefile.lang.MakefileFileTypeFactory"/>
+
+        <!--Commenters-->
         <lang.commenter language="Blueprint" implementationClass="me.dmitvitalii.blueprint.BlueprintCommenter"/>
-        <lang.parserDefinition language="Blueprint" implementationClass="me.dmitvitalii.blueprint.lang.BlueprintParserDefinition"/>
-        <lang.syntaxHighlighterFactory language="Blueprint" implementationClass="me.dmitvitalii.blueprint.lang.BlueprintHighlighter$Companion"/>
+
+        <!--Parsers-->
+        <lang.parserDefinition language="Blueprint"
+                               implementationClass="me.dmitvitalii.blueprint.lang.BlueprintParserDefinition"/>
+
+        <!--Highlighters-->
+        <lang.syntaxHighlighterFactory language="Blueprint"
+                                       implementationClass="me.dmitvitalii.blueprint.lang.BlueprintHighlighter$Companion"/>
+
+        <!--Color setting pages-->
         <colorSettingsPage implementation="me.dmitvitalii.blueprint.BlueprintColorSettings"/>
-        <completion.contributor language="Blueprint" implementationClass="me.dmitvitalii.blueprint.BlueprintCompletion"/>
+
+        <!--Completions-->
+        <completion.contributor language="Blueprint"
+                                implementationClass="me.dmitvitalii.blueprint.BlueprintCompletion"/>
     </extensions>
 
     <actions>
-        <group id="APDP.SampleMenu" text="_Sample Menu" description="Sample Menu">
+        <group id="APDP.BlueprintMenu" text="text: Add a blueprint Menu" description="desc: Add a blueprint Menu">
             <add-to-group group-id="NewGroup" anchor="last"/>
             <action class="me.dmitvitalii.blueprint.actions.CreateBlueprintAction" id="apdp.CreateBlueprintFile"/>
         </group>
