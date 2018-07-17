@@ -21,6 +21,7 @@
         ASSIGN              = '='
         PLUS_ASSIGN         = '+='
         COLON_ASSIGN        = ':='
+        // FIXME: is -= supported in any cases?
         PLUS                = '+'
         MINUS               = '-'
         SLASH               = '/'
@@ -57,17 +58,25 @@
     ]
 }
 
-File ::= (variable | directive)
+File ::= (variable | macro) *
 
-variable ::= (IDENTIFIER assign value) | (IDENTIFIER assign BACKSLASH)
+variable ::= (IDENTIFIER assignment value BACKSLASH?) | (IDENTIFIER assignment BACKSLASH WS? value BACKSLASH?)
+
 directive ::= (include
               | KEYWORD_DEFINE | KEYWORD_OVERRIDE
               | KEYWORD_EXPORT | KEYWORD_UNEXPORT)
 
+closure ::= KEYWORD_ENDIF | KEYWORD_ENDEF
+
 include ::= (KEYWORD_INCLUDE | KEYWORD_MINCLUDE | KEYWORD_CINCLUDE) IDENTIFIER
 
-assign ::= (ASSIGN | PLUS_ASSIGN | COLON_ASSIGN)
+macro ::= (directive callee variable | IDENTIFIER | STRING closure) | (directive callee KEYWORD_ELSE callee closure)
 
-value ::= string | boolean
-string ::= ONE_QUOTE_STRING | TWO_QUOTES_STRING
-boolean ::= 'true' | 'false'
+private assignment ::= (ASSIGN | PLUS_ASSIGN | COLON_ASSIGN)
+
+callee ::= (CALLEE_START IDENTIFIER CALLEE_END) | (CALLEE_START IDENTIFIER COMMA STRING? callee? IDENTIFIER? CALLEE_END)
+
+value ::= string | boolean | callee
+
+private string ::= ONE_QUOTE_STRING | TWO_QUOTES_STRING
+private boolean ::= 'true' | 'false'
