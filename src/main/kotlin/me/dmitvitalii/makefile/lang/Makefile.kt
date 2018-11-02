@@ -18,6 +18,7 @@ package me.dmitvitalii.makefile.lang
 import com.intellij.extapi.psi.PsiFileBase
 import com.intellij.icons.AllIcons
 import com.intellij.lang.Language
+import com.intellij.lexer.FlexAdapter
 import com.intellij.openapi.fileTypes.FileTypeConsumer
 import com.intellij.openapi.fileTypes.FileTypeFactory
 import com.intellij.openapi.fileTypes.LanguageFileType
@@ -66,3 +67,5 @@ class MakefileFile(provider: FileViewProvider) : PsiFileBase(provider, MakefileL
 
     override fun toString() = fileType.name
 }
+
+class MakefileLexerAdapter : FlexAdapter(MakefileLexer(null))
