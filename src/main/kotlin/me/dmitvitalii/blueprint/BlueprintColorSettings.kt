@@ -48,9 +48,6 @@ class BlueprintColorSettings : ColorSettingsPage {
 
   override fun getDisplayName() = fileType.name
 
-  /**
-   * TODO: how to work with resources and get strings in the plugin ecosystem?
-   */
   override fun getDemoText(): String {
     return """
       |// Comment
